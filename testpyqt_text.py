@@ -24,11 +24,7 @@ class MyWidget(QMainWindow):
         with open(file_path[0], mode= "rb") as f:
              read_data = f.read()
              f.close()
-        a = list(read_data.hex())
-
-
-
-        self.textEdit.setText(b)
+    self.textEdit.setText(read_data.hex())
 
 
 
