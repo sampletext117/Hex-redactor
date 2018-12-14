@@ -12,12 +12,7 @@ class MyWidget(QMainWindow):
         self.action_3.setShortcut("Ctrl+Q")
         self.action_3.setStatusTip('Открытие выбранного файла')
 
-    def chunks(lst, count):
-        start = 0
-        for i in range(count):
-            stop = start + len(lst[i::count])
-            yield lst[start:stop]
-            start = stop
+
 
     def open_file(self):
         file_path = QFileDialog.getOpenFileName(self)
