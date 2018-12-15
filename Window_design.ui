@@ -28,6 +28,7 @@
      <string>Меню</string>
     </property>
     <addaction name="action_3"/>
+    <addaction name="action_4"/>
    </widget>
    <addaction name="menu"/>
   </widget>
@@ -40,6 +41,11 @@
   <action name="action_3">
    <property name="text">
     <string>Открыть файл</string>
+   </property>
+  </action>
+  <action name="action_4">
+   <property name="text">
+    <string>Сохранить файл</string>
    </property>
   </action>
  </widget>
