@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>802</width>
     <height>600</height>
    </rect>
   </property>
@@ -19,7 +19,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>802</width>
      <height>21</height>
     </rect>
    </property>
@@ -30,7 +30,15 @@
     <addaction name="action_3"/>
     <addaction name="action_4"/>
    </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>Настройки</string>
+    </property>
+    <addaction name="action_2"/>
+    <addaction name="action_5"/>
+   </widget>
    <addaction name="menu"/>
+   <addaction name="menu_2"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="action">
@@ -39,6 +47,10 @@
    </property>
   </action>
   <action name="action_3">
+   <property name="icon">
+    <iconset theme="save_icon">
+     <normaloff>../../.designer/backup</normaloff>../../.designer/backup</iconset>
+   </property>
    <property name="text">
     <string>Открыть файл</string>
    </property>
@@ -46,6 +58,21 @@
   <action name="action_4">
    <property name="text">
     <string>Сохранить файл</string>
+   </property>
+  </action>
+  <action name="action_2">
+   <property name="text">
+    <string>Цвет фона</string>
+   </property>
+  </action>
+  <action name="action_5">
+   <property name="text">
+    <string>Шрифт</string>
+   </property>
+  </action>
+  <action name="action_6">
+   <property name="text">
+    <string>Размер шрифта</string>
    </property>
   </action>
  </widget>
