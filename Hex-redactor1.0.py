@@ -88,16 +88,16 @@ class MyWidget(QMainWindow):
         self.action_5.setStatusTip('Изменение шрифта')
 
 
-        self.plain_text = MyTextEdit(self)
-        self.plain_text.move(20, 52)
-        self.plain_text.resize(200, 500)
-        self.plain_text.textChanged.connect(self.plain_text_input)
+        self.plain_text_field = MyTextEdit(self)
+        self.plain_text_field.move(20, 52)
+        self.plain_text_field.resize(200, 500)
+        self.plain_text_field.textChanged.connect(self.plain_text_input)
 
 
-        self.hex_text = MyTextEdit(self)
-        self.hex_text.move(250, 52)
-        self.hex_text.resize(500, 500)
-        self.hex_text.textChanged.connect(self.hex_text_input)
+        self.hex_text_field = MyTextEdit(self)
+        self.hex_text_field.move(250, 52)
+        self.hex_text_field.resize(500, 500)
+        self.hex_text_field.textChanged.connect(self.hex_text_input)
 
 
 
@@ -105,11 +105,11 @@ class MyWidget(QMainWindow):
     def change_background(self):
         color = QColorDialog.getColor()
         if color.isValid():
-            self.hex_text.setStyleSheet(
+            self.hex_text_field.setStyleSheet(
                 "background-color: {}".format(color.name())
             )
         if color.isValid():
-            self.plain_text.setStyleSheet(
+            self.plain_text_field.setStyleSheet(
                 "background-color: {}".format(color.name())
             )
 
@@ -117,8 +117,8 @@ class MyWidget(QMainWindow):
         try:
             font, ok = QFontDialog.getFont()
             if ok:
-                self.hex_text.setFont(font)
-                self.plain_text.setFont(font)
+                self.hex_text_field.setFont(font)
+                self.plain_text_field.setFont(font)
 
         except:
             pass
@@ -134,9 +134,9 @@ class MyWidget(QMainWindow):
                 f.close()
             hexdata = read_data.hex()
             splited_hex = ' '.join([hexdata[i:i + 2] for i in range(0, len(hexdata), 2)])
-            self.hex_text.setPlainText(splited_hex)
+            self.hex_text_field.setPlainText(splited_hex)
             b = bytes.fromhex(hexdata)
-            self.plain_text.setPlainText(b.decode("utf8"))
+            self.plain_text_field.setPlainText(b.decode("utf8"))
 
 
     def save_file(self):
@@ -149,7 +149,7 @@ class MyWidget(QMainWindow):
                 f.close()
 
     def get_hex_bytes(self):
-        b_text = ''.join(self.hex_text.toPlainText().split())
+        b_text = ''.join(self.hex_text_field.toPlainText().split())
         b = bytes.fromhex(b_text)
         return b
 
@@ -157,21 +157,28 @@ class MyWidget(QMainWindow):
         if self.is_text_inserted:
             pass
 
-        # try:
-        #     plain_text = transform_hex_text_to_plain(self.hex_text.toPlainText())
-        #     self.is_text_inserted = True
-        #     self.plain_text.setPlainText(plain_text)
-        #     self.is_text_inserted = False
-        # except:
-        #     pass
+
+
+        try:
+            plain_text = transform_hex_text_to_plain(self.hex_text_field.toPlainText())
+            self.is_text_inserted = True
+            if plain_text != self.plain_text_field.toPlainText():
+                self.plain_text_field.setPlainText(plain_text)
+                self.is_text_inserted = False
+        except:
+            pass
+
+
+
+
 
     def plain_text_input(self):
         if self.is_text_inserted:
             pass
 
-        hex_text = transform_plain_text_to_hex(self.plain_text.toPlainText())
+        hex_text = transform_plain_text_to_hex(self.plain_text_field.toPlainText())
         self.is_text_inserted = True
-        self.hex_text.setPlainText(hex_text)
+        self.hex_text_field.setPlainText(hex_text)
         self.is_text_inserted = False
 
 
