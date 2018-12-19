@@ -1,7 +1,7 @@
 import sys
 from PyQt5 import uic
 from PyQt5 import QtCore, QtGui
-from PyQt5.QtWidgets import QApplication
+from PyQt5.QtWidgets import QApplication, QLabel
 from PyQt5.QtWidgets import QWidget, QMainWindow
 from PyQt5.QtWidgets import QFileDialog, QPlainTextEdit
 from PyQt5.QtWidgets import QColorDialog, QInputDialog, QFontDialog
@@ -88,17 +88,19 @@ class MyWidget(QMainWindow):
         self.action_5.setStatusTip('Изменение шрифта')
 
 
+        self.plain_text = MyTextEdit(self)
+        self.plain_text.move(20, 52)
+        self.plain_text.resize(200, 500)
+        self.plain_text.textChanged.connect(self.plain_text_input)
+
 
         self.hex_text = MyTextEdit(self)
-        self.hex_text.move(250, 32)
+        self.hex_text.move(250, 52)
         self.hex_text.resize(500, 500)
         self.hex_text.textChanged.connect(self.hex_text_input)
 
 
-        self.plain_text = MyTextEdit(self)
-        self.plain_text.move(20, 32)
-        self.plain_text.resize(200, 500)
-        self.plain_text.textChanged.connect(self.plain_text_input)
+
 
     def change_background(self):
         color = QColorDialog.getColor()
@@ -155,10 +157,13 @@ class MyWidget(QMainWindow):
         if self.is_text_inserted:
             pass
 
-        # plain_text = transform_hex_text_to_plain(self.hex_text.toPlainText())
-        # self.is_text_inserted = True
-        # self.plain_text.setPlainText(plain_text)
-        # self.is_text_inserted = False
+        # try:
+        #     plain_text = transform_hex_text_to_plain(self.hex_text.toPlainText())
+        #     self.is_text_inserted = True
+        #     self.plain_text.setPlainText(plain_text)
+        #     self.is_text_inserted = False
+        # except:
+        #     pass
 
     def plain_text_input(self):
         if self.is_text_inserted:

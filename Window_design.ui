@@ -13,7 +13,34 @@
   <property name="windowTitle">
    <string>Hex - redactor 1.0</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>10</y>
+      <width>171</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Текст в формате UTF-8</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>10</y>
+      <width>171</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Текст в формате HEX</string>
+    </property>
+   </widget>
+  </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
@@ -62,12 +89,12 @@
   </action>
   <action name="action_2">
    <property name="text">
-    <string>Цвет фона</string>
+    <string>Изменить цвет фона</string>
    </property>
   </action>
   <action name="action_5">
    <property name="text">
-    <string>Шрифт</string>
+    <string>Изменить шрифт</string>
    </property>
   </action>
   <action name="action_6">
