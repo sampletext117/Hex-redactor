@@ -30,7 +30,6 @@ class MyTextEdit(QPlainTextEdit):
             self.startPosition = cursor.position()
 
     def mouseMoveEvent(self, event):
-
         if event.button() == QtCore.Qt.NoButton:
             self.endCursorPosition = event.pos()
             cursor = self.cursorForPosition(self.endCursorPosition)
@@ -40,7 +39,6 @@ class MyTextEdit(QPlainTextEdit):
             self.setTextCursor(cursor)
 
     def mouseReleaseEvent(self, event):
-
         if event.button() == QtCore.Qt.LeftButton:
             self.endCursorPosition = event.pos()
             cursor = self.cursorForPosition(self.endCursorPosition)
@@ -99,9 +97,6 @@ class MyWidget(QMainWindow):
         self.hex_text_field.resize(500, 500)
         self.hex_text_field.textChanged.connect(self.hex_text_input)
 
-
-
-
     def change_background(self):
         color = QColorDialog.getColor()
         if color.isValid():
@@ -123,7 +118,6 @@ class MyWidget(QMainWindow):
         except:
             pass
 
-
     def open_file(self):
         file_path = QFileDialog.getOpenFileName(self)
         if file_path[0] == '':
@@ -137,7 +131,6 @@ class MyWidget(QMainWindow):
             self.hex_text_field.setPlainText(splited_hex)
             b = bytes.fromhex(hexdata)
             self.plain_text_field.setPlainText(b.decode("utf8"))
-
 
     def save_file(self):
         file_path = QFileDialog.getSaveFileName(self)
@@ -157,8 +150,6 @@ class MyWidget(QMainWindow):
         if self.is_text_inserted:
             pass
 
-
-
         try:
             plain_text = transform_hex_text_to_plain(self.hex_text_field.toPlainText())
             self.is_text_inserted = True
@@ -167,10 +158,6 @@ class MyWidget(QMainWindow):
                 self.is_text_inserted = False
         except:
             pass
-
-
-
-
 
     def plain_text_input(self):
         if self.is_text_inserted:
