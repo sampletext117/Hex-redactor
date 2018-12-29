@@ -8,8 +8,6 @@ from PyQt5.QtWidgets import QColorDialog, QInputDialog, QFontDialog
 import binascii
 
 
-
-
 class MyTextEdit(QPlainTextEdit):
     is_first_input = True
 
@@ -71,7 +69,6 @@ class MyWidget(QMainWindow):
         self.action_3.triggered.connect(self.open_file)
         self.action_3.setShortcut("Ctrl+O")
         self.action_3.setStatusTip('Открытие выбранного файла')
-
 
         self.action_4.triggered.connect(self.save_file)
         self.action_4.setShortcut("Ctrl+S")
